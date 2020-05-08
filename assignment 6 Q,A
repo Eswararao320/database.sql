@@ -1,0 +1,30 @@
+Get fname and lname all the actors casted in movie_id = 12148
+
+Q1="Write your query here"
+...
+
+Count the number of movies in which actor “Harrison (I) Ford” acted
+first name: “Harrison (I)”
+last name: “Ford”
+...
+Q2="Write your query here"
+...
+
+
+Get all the distinct actors ids who acted in all movie whose title starts with Young Latin Girls.
+...
+Q3="Write your query here"
+...
+
+
+How many distinct actors have acted in any movie between 1990 and 2000 (both inclusive).
+...
+Q4="Write your query here"
+
+
+.................
+
+Q1='''SELECT fname,lname FROM (Actor INNER JOIN Cast on `Cast`.pid = `Actor`.id) INNER JOIN Movie on `Movie`.id = `Cast`.mid WHERE `Movie`.id = 12148;'''
+Q2='''SELECT COUNT(`Movie`.id) FROM (Movie INNER JOIN Cast on `Movie`.id = `Cast`.mid )INNER JOIN Actor on `Cast`.pid = `Actor`.id WHERE `Actor`.fname LIKE 'Harrison (I)' and `Actor`.lname LIKE 'Ford';'''      
+Q3='''SELECT DISTINCT(`Actor`.id) FROM (Actor INNER JOIN Cast on `Cast`.pid = `Actor`.id) INNER JOIN Movie on `Movie`.id = `Cast`.mid WHERE `Movie`.name LIKE 'Young Latin Girls%';'''
+Q4='''SELECT COUNT(DISTINCT `Actor`.id)FROM (Actor INNER JOIN Cast on `Cast`.pid = `Actor`.id) INNER JOIN Movie on `Movie`.id = `Cast`.mid WHERE year BETWEEN 1990 and 2000;'''
